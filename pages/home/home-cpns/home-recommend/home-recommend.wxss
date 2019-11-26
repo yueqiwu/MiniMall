@@ -1,0 +1,15 @@
+/* pages/home/home-cpns/home-recommend/home-recommend.wxss */
+.home-recommend{
+  width:100%;
+  display: flex;
+  padding:40rpx 0;
+  border-bottom:solid 16rpx #eee;
+}
+.recommend-item{
+  flex:1;
+  text-align:center;
+  font-size:28rpx;
+}
+.recommend-item image{
+  width:80%;
+}

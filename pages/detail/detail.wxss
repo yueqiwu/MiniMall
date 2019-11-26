@@ -1,0 +1,18 @@
+/* pages/detail/detail.wxss */
+.detail {
+  /* height: calc(100% - 120rpx); */
+  position: absolute;
+  top:0;
+  right:0;
+  bottom:120rpx;
+  left:0;
+}
+
+.d-swiper swiper {
+  height: 800rpx;
+}
+.detail .back-top {
+  position: fixed;
+  right: 16rpx;
+  bottom: 120rpx;
+}

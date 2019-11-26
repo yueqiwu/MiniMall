@@ -1,0 +1,4 @@
+/* pages/home/home-cpns/home-feature/home-feature.wxss */
+image{
+  width:100%;
+}

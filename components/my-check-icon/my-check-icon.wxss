@@ -1,0 +1,12 @@
+/* components/my-check-icon/my-check-icon.wxss */
+.check-icon{
+  box-sizing: border-box;
+  width:40rpx;
+  height:40rpx;
+  border-radius:50%;
+  border:2px solid #aaa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color:#ff5777; */
+}

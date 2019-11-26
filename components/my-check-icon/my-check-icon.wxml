@@ -1,0 +1,8 @@
+<!--components/my-check-icon/my-check-icon.wxml-->
+  <icon 
+      class="check-icon"
+      type="success" 
+      size="20"
+      color="{{isChecked?'#ff5777':'#fff'}}"
+      style="border-color:{{isChecked?'#ff5777':'#aaa'}}"
+      />

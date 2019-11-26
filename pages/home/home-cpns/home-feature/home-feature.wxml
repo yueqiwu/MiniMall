@@ -1,0 +1,2 @@
+<!--pages/home/home-cpns/home-feature/home-feature.wxml-->
+<image src="/assets/images/home/recommend_bg.jpg" bindload="ImageLoad"></image>
