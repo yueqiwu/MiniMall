@@ -29,8 +29,8 @@ Page({
     },
     screenHeight: 0,
     showBackTop: false,
-    showTabControl:false,
-    tabControlTop:0
+    showTabControl: false,
+    tabControlTop: 0
   },
 
   /**
@@ -68,7 +68,7 @@ Page({
     }
     //------------tabControl---------------
     let flag2 = e.scrollTop >= this.data.tabControlTop;
-    if (flag2 !== this.data.showTabControl){
+    if (flag2 !== this.data.showTabControl) {
       this.setData({
         showTabControl: e.scrollTop >= this.data.tabControlTop
       })
@@ -96,29 +96,29 @@ Page({
         tabControlTop: rect.top
       })
     }).exec()
-},
-//-----------------------网络请求-----------------------------
-_getMultiData() {
-  getMultiData().then(res => {
-    let imageList = res.data.banner.list.map(item=>item.image)
-    this.setData({
-      banners: imageList,
-      recommends: res.data.recommend.list
+  },
+  //-----------------------网络请求-----------------------------
+  _getMultiData() {
+    getMultiData().then(res => {
+      let imageList = res.data.banner.list.map(item => item.image)
+      this.setData({
+        banners: imageList,
+        recommends: res.data.recommend.list
+      })
     })
-  })
-},
-_getProduct(type) {
-  let page = this.data.goods[type].page + 1;
-  getProduct(type, page).then(res => {
-    // console.log(res);
-    const newList = this.data.goods[type].list;
-    newList.push(...res.data.list);
-    const goodsList = `goods.${type}.list`;
-    const newPage = `goods.${type}.page`;
-    this.setData({
-      [goodsList]: newList,
-      [newPage]: page
+  },
+  _getProduct(type) {
+    let page = this.data.goods[type].page + 1;
+    getProduct(type, page).then(res => {
+      // console.log(res);
+      const newList = this.data.goods[type].list;
+      newList.push(...res.data.list);
+      const goodsList = `goods.${type}.list`;
+      const newPage = `goods.${type}.page`;
+      this.setData({
+        [goodsList]: newList,
+        [newPage]: page
+      })
     })
-  })
-}
+  }
 })

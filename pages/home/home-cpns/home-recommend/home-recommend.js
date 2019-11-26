@@ -1,4 +1,5 @@
 // pages/home/home-cpns/home-recommend/home-recommend.js
+import debounce from "../../../../utils/util.js"
 Component({
   /**
    * 组件的属性列表
@@ -22,7 +23,13 @@ Component({
    */
   methods: {
     ImageLoad() {
-      this.triggerEvent('imageLoad', {}, {})
-    }
+      this.timer && clearTimeout(this.timer);
+      this.timer = setTimeout(()=>{
+        this.triggerEvent('imageLoad', {}, {})
+      },200) 
+    },
+    // d_ImageLoad:debounce(this.ImageLoad)
+    
   }
+
 })

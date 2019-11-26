@@ -1,18 +1,21 @@
 <!--pages/cart/childcpns/car-list-item/cart-list-item.wxml-->
-<view class='cart-list-item'>
-  <view class='item-icon'>
-    <my-check-icon bindtap='onCheckClick' data-index="{{index}}" isChecked="{{goods.checked}}"/>
-  </view>
-  <view class='item-img'>
-    <image src="{{goods.imageURL}}" mode='aspectFill'/>
-  </view>
-  <view class='item-info'>
-    <view class='title'>{{goods.title}}</view>
-    <view class='desc'>{{goods.desc}}</view>
-    <view class='price-count'>
-      <view class='price'>¥{{goods.price}}</view>
-      <view class='count'>x{{goods.count}}</view>
+<scroll-view scroll-x class="cart-item-scroll" scroll-left="{{leftPosition}}" scroll-with-animation>
+  <view class='cart-list-item' bindtouchend="onTouchend">
+    <view class='item-icon' bindtap='onCheckClick' data-index="{{index}}">
+      <my-check-icon isChecked="{{goods.checked}}" />
     </view>
+    <view class='item-img'>
+      <image src="{{goods.imageURL}}" mode='aspectFill' />
+    </view>
+    <view class='item-info'>
+      <view class='title'>{{goods.title}}</view>
+      <view class='desc'>{{goods.desc}}</view>
+      <view class='price-count'>
+        <view class='price'>¥{{goods.price}}</view>
+        <view class='count'>x{{goods.count}}</view>
+      </view>
+    </view>
+    <view class='item-delete' bindtap="onDelete" data-index="{{index}}">删除</view>
   </view>
-</view>
 
+</scroll-view>

@@ -94,7 +94,7 @@ Page({
     //   title: '加入购物车成功',
     // })
 
-    console.log(app.globalData.cartList)
+    // console.log(app.globalData.cartList)
   },
   backTop(){
     this.setData({

@@ -1,13 +1,21 @@
 /* pages/cart/childcpns/car-list-item/cart-list-item.wxss */
+.cart-item-scroll{
+  width:100%;
+}
 .cart-list-item {
   display: flex;
   padding: 20rpx;
   align-items: center;
   border: 1px solid #eee;
+  height:252rpx;
+  width:calc(100% + 80rpx);
 }
 
 .item-icon {
   width: 60rpx;
+  height:80%;
+  display: flex;
+  align-items:center;
 }
 
 .item-img {
@@ -23,6 +31,7 @@
 .item-info {
   flex: 1;
   width: 300rpx;
+  padding-right:30rpx;
 }
 
 .item-info .title {
@@ -46,9 +55,20 @@
   display: flex;
   margin-top: 40rpx;
   justify-content: space-between;
+  /* padding-right:20rpx; */
 }
 
 .price {
   color: #ff5777;
   font-size: 40rpx;
+}
+.item-delete{
+  width:80rpx;
+  height:100%;
+  background-color:#f00;
+  color:#fff;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  border-radius: 20rpx;
 }

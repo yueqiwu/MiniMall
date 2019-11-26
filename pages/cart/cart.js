@@ -7,8 +7,10 @@ Page({
    */
   data: {
     cartList: [],
+    isCheckAll:false,
     totalPrice:0,
-    totalCount:0
+    totalCount:0,
+    leftPosition:0
   },
 
   /**
@@ -21,15 +23,8 @@ Page({
     });
 
     //页面加载时判断全选的状态
-    this.selectComponent('.bottom-bar').setData({
-      selected: this._isCheckAll()
-    })
-
     //获得总计价格
-    this.setData({
-      totalPrice:this._getTotalPrice(),
-      totalCount:this._getTotalCount()
-    })
+    this._changeData()
   },
 
   /**
@@ -41,15 +36,8 @@ Page({
       cartList: app.globalData.cartList
     });
     //页面显示时判断全选状态
-    this.selectComponent('.bottom-bar').setData({
-      selected: this._isCheckAll()
-    })
     //改变总计价格
-    this.setData({
-      totalPrice: this._getTotalPrice(),
-      totalCount: this._getTotalCount()
-
-    })
+    this._changeData()
   },
 
   /**
@@ -66,37 +54,45 @@ Page({
 
     //每点击一下都得判断checkAll的状态
     //改变checkAll按钮的状态
-    this.selectComponent('.bottom-bar').setData({
-      selected: this._isCheckAll()
-    })
+    //改变总计价格和数量
+    this._changeData()
 
-    //改变总计价格
-    this.setData({
-      totalPrice: this._getTotalPrice(),
-      totalCount: this._getTotalCount()
+  },
+  /**
+   * 删除订单
+   * leftPosition属性为零是因为可能是组件复用的原因 删除订单后下一个订单会自动滚动到上一个被删除的位置
+   */
+  deleteOrder(e){
+    let slef = this;
+    wx.showModal({
+      title: '您确定要删除该订单吗？',
+      success(res){
+        if(res.confirm){
+          const index = e.detail.index;
+          slef.data.cartList.splice(index, 1);
+          slef.setData({
+            cartList: slef.data.cartList,
+            leftPosition: 0
+          });
+          slef._changeData();
+        }
+      }
     })
-
   },
   /**
    * 全选按钮被点击时
    */
   checkAllClick(e) {
     //当前点击的状态
-    const currentChecked = e.detail.isChecked;
+    const currentChecked = this.data.isCheckAll;
     if (!currentChecked) { //当前状态为false时 全部改成true
       this._changeCheckAll(true)
     } else {
       this._changeCheckAll(false)
     };
 
-    this.selectComponent('.bottom-bar').setData({
-      selected: !currentChecked
-    })
-
-    this.setData({
-      totalPrice: this._getTotalPrice(),
-      totalCount: this._getTotalCount()
-    })
+    //更新价格 数量 按钮状态
+    this._changeData()
     // console.log(app.globalData.cartList)
   },
 
@@ -112,6 +108,10 @@ Page({
       cartList: newCartList
     })
   },
+
+  /**
+   * 判断是否为全选
+   */
   _isCheckAll() {
     if (this.data.cartList.length === 0) return false;
     for (let i of this.data.cartList) {
@@ -121,20 +121,25 @@ Page({
     }
     return true;
   },
-  _getTotalPrice(){
+
+  /**
+   * 更新价格 数量 全选按钮的状态
+   */
+  _changeData(){
     let total = 0
-    for (let i of this.data.cartList){
-      if(i.checked){
-        total += Number(i.price);
+    let count = 0;
+    for (let i of this.data.cartList) {
+      if (i.checked) {
+        total += Number(i.price) * i.count;
+        count += i.count
       }
     }
-    return total.toFixed(2);
-  },
-  _getTotalCount(){
-    let count = 0;
-    for(let i of this.data.cartList){
-      count += i.count
-    }
-    return count
+    total = total.toFixed(2);
+    
+    this.setData({
+      totalPrice: total,
+      totalCount: count,
+      isCheckAll:this._isCheckAll()
+    })
   }
 })

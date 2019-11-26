@@ -1,5 +1,6 @@
 <!--pages/home/home.wxml-->
-<my-swiper list="{{banners}}"/>
+<view class="home">
+  <my-swiper list="{{banners}}"/>
 <home-recommend list="{{recommends}}" bind:imageLoad="imageLoad"/>
 <home-feature bind:imageLoad="imageLoad"/>
 <my-tabControl list="{{tabControlList}}" bind:tabClick="tabControlItemClick" class="tab-control"/>
@@ -8,4 +9,5 @@
 </view>
 <my-goods goodslist="{{goods[currentType].list}}"/>
 <my-backTop bind:tap="backToTop" wx:if="{{showBackTop}}"/>
+</view>
 

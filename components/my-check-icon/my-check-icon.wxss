@@ -1,8 +1,8 @@
 /* components/my-check-icon/my-check-icon.wxss */
 .check-icon{
   box-sizing: border-box;
-  width:40rpx;
-  height:40rpx;
+  width:20px;
+  height:20px;
   border-radius:50%;
   border:2px solid #aaa;
   display: flex;
