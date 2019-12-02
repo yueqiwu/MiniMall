@@ -3,6 +3,11 @@ import {
   getMultiData,
   getProduct
 } from "../../service/home.js"
+import {
+  POP,
+  NEW,
+  SELL
+}from "../../common/const.js"
 Page({
 
   /**
@@ -12,17 +17,17 @@ Page({
     banners: [],
     recommends: [],
     tabControlList: ['流行', '新款', '精选'],
-    currentType: 'pop',
+    currentType: POP,
     goods: {
-      pop: {
+      [POP]: {
         page: 0,
         list: []
       },
-      new: {
+      [NEW]: {
         page: 0,
         list: []
       },
-      sell: {
+      [SELL]: {
         page: 0,
         list: []
       }
@@ -38,9 +43,9 @@ Page({
    */
   onLoad: function(options) {
     this._getMultiData();
-    this._getProduct('pop');
-    this._getProduct('new');
-    this._getProduct('sell');
+    this._getProduct([POP]);
+    this._getProduct([NEW]);
+    this._getProduct([SELL]);
     this.data.screenHeight = wx.getSystemInfoSync().screenHeight;
   },
 
@@ -77,7 +82,7 @@ Page({
   },
   // ----------------------触发的事件--------------------------
   tabControlItemClick(e) {
-    const types = ['pop', 'new', 'sell'];
+    const types = [[POP], [NEW], [SELL]];
     this.setData({
       currentType: types[e.detail.index]
     });

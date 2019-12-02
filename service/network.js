@@ -5,7 +5,8 @@ import {
 
 export default function(options) {
   wx.showLoading({
-    title: '数据正在加载...'
+    title: '数据正在加载...',
+    mask:true
   })
 
   return new Promise((resolve, reject) => {

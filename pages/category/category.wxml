@@ -1,2 +1,5 @@
 <!--pages/category/category.wxml-->
-<text>pages/category/category.wxml</text>
+<view class='category'>
+  <category-menu categories="{{categories}}" bind:menuclick="menuClick"/>
+  <category-content subcategories="{{subCategories}}" categoryDetail="{{categoryDetail[currentType]}}" class="content" bind:tabClick="tabClick"/>
+</view>

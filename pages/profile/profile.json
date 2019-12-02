@@ -1,4 +1,8 @@
 {
-  "usingComponents": {},
-  "navigationBarTitleText": "我的"
+  "usingComponents": {
+    "profile-header": "./childCpns/profile-header/profile-header",
+    "profile-info": "./childCpns/profile-info/profile-info",
+    "profile-list-view": "./childCpns/profile-list-view/profile-list-view"
+  },
+  "navigationBarTitleText": "我的信息"
 }
