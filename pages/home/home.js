@@ -43,9 +43,9 @@ Page({
    */
   onLoad: function(options) {
     this._getMultiData();
-    this._getProduct([POP]);
-    this._getProduct([NEW]);
-    this._getProduct([SELL]);
+    this._getProduct(POP);
+    this._getProduct(NEW);
+    this._getProduct(SELL);
     this.data.screenHeight = wx.getSystemInfoSync().screenHeight;
   },
 
@@ -82,7 +82,7 @@ Page({
   },
   // ----------------------触发的事件--------------------------
   tabControlItemClick(e) {
-    const types = [[POP], [NEW], [SELL]];
+    const types = [POP, NEW, SELL];
     this.setData({
       currentType: types[e.detail.index]
     });
